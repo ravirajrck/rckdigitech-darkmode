@@ -1,1 +1,67 @@
-/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+@import 'swiper/css';
+@import 'swiper/css/pagination';
+@import 'swiper/css/navigation';
+@import 'swiper/css/effect-fade';
+/* पूरे प्रोजेक्ट के लिए Roboto फॉन्ट सेट किया गया है */
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #0a0a0a;
+  color: #f5f5f5;
+}
+
+
+/* Hide default cursor on desktop */
+@media (min-width: 768px) {
+  body, a, button, input, textarea {
+    cursor: none !important;
+  }
+}
+
+/* Star/Sparkle Particle Animation */
+@keyframes sparkleAnim {
+  0% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.sparkle-particle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 999999;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFD758'%3E%3Cpath d='M12 0l3.09 8.26L24 11.27l-7.91 3.01L19.09 24 12 18.26 4.91 24l3-9.72L0 11.27l8.91-3.01z'/%3E%3C/svg%3E");
+  width: 14px;
+  height: 14px;
+  animation: sparkleAnim 0.8s forwards ease-out;
+}
+
+
+
+
+/* बेसिक फॉलबैक स्मूथ स्क्रॉल */
+html {
+  scroll-behavior: smooth;
+}
+
+/* पूरी वेबसाइट के लिए प्रीमियम कस्टम स्क्रॉलबार */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a; /* डार्क बैकग्राउंड */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FFD758; /* होवर करने पर गोल्डन कलर */
+}

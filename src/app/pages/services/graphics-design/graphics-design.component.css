@@ -1,0 +1,15 @@
+  .floating-left {
+        animation: gentleFloat1 6s ease-in-out infinite;
+      }
+      .floating-right {
+        animation: gentleFloat2 5s ease-in-out infinite;
+      }
+
+      @keyframes gentleFloat1 {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateX(-15px); }
+      }
+      @keyframes gentleFloat2 {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateX(-15px); }
+      }

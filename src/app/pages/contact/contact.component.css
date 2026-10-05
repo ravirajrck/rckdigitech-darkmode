@@ -1,0 +1,27 @@
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+@keyframes floatFast {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.03);
+  }
+}
+.animate-float-1 {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+.animate-float-2 {
+  animation: floatFast 3s ease-in-out infinite;
+}
+.animate-float-3 {
+  animation: floatSlow 5s ease-in-out infinite 1s;
+}

@@ -1,0 +1,43 @@
+/* Marquee Infinite Smooth Animation (Reverse Direction) */
+.marquee-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  user-select: none;
+}
+
+.marquee-track {
+  display: flex;
+  /* गति को तेज या धीमा करने के लिए 30s को कम या ज्यादा करें */
+  animation: scrollMarquee 25s linear infinite;
+}
+
+/* माउस ले जाने पर रुक जाएगा */
+.marquee-container:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes scrollMarquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px); /* ऊपर की तरफ उछाल */
+  }
+}
+
+.animate-float {
+  animation: float 2.5s ease-in-out infinite;
+}
+
+
+

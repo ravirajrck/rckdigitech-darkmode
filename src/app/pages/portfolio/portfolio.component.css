@@ -1,0 +1,102 @@
+/* Active Filter Button Style matching RCK DIGITECH Theme */
+.active-filter {
+  background-color: #FFD758 !important;
+  color: #0a0a0a !important;
+  border-color: #FFD758 !important;
+  box-shadow: 0 0 20px rgba(255, 215, 88, 0.3);
+}
+
+/* Shimmer Loading Effect for Dark Mode */
+.shimmer {
+  background: linear-gradient(90deg, #171717 25%, #262626 37%, #171717 63%);
+  background-size: 400% 100%;
+  animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -500px 0;
+  }
+  100% {
+    background-position: 500px 0;
+  }
+}
+
+.shimmer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.shimmer-card {
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 220px;
+}
+
+.shimmer-image {
+  height: 140px;
+  width: 100%;
+}
+
+.shimmer-content {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.shimmer-line {
+  height: 12px;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.shimmer-line.short {
+  width: 60%;
+}
+
+/* 3D Flip Card Enhancements */
+.flip-card {
+  perspective: 1000px;
+  width: 100%;
+  height: 220px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.flip-card-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,91 @@
+<div class="bg-neutral-950 text-white font-sans min-h-screen pb-24 selection:bg-[#FFD758] selection:text-neutral-950">
+  
+  <!-- Header Section -->
+  <div class="text-center pt-16 pb-12 px-6 relative overflow-hidden">
+    <!-- Background Glow Effect -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[200px] bg-[#FFD758]/10 blur-[120px] pointer-events-none rounded-full"></div>
+    
+    <h2 class="text-4xl md:text-6xl font-black text-white mb-4 tracking-tight relative z-10">
+      Our <span class="text-[#FFD758]">Works</span>
+    </h2>
+    <p class="text-neutral-400 text-base md:text-lg mb-10 max-w-2xl mx-auto font-medium leading-relaxed relative z-10">
+      Discover our best designs and cutting-edge digital developments tailored for growth.
+    </p>
+
+    <!-- Filter Buttons -->
+    <div class="flex flex-wrap justify-center gap-3 max-w-5xl mx-auto relative z-10">
+      <button (click)="filterWorks('all')" [class.active-filter]="activeFilter === 'all'" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-neutral-900 border border-neutral-800 text-neutral-300 hover:border-[#FFD758] hover:text-[#FFD758] transition-all duration-300 shadow-lg">All</button>
+      <button (click)="filterWorks('uiux')" [class.active-filter]="activeFilter === 'uiux'" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-neutral-900 border border-neutral-800 text-neutral-300 hover:border-[#FFD758] hover:text-[#FFD758] transition-all duration-300 shadow-lg">UI/UX</button>
+      <button (click)="filterWorks('websites')" [class.active-filter]="activeFilter === 'websites'" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-neutral-900 border border-neutral-800 text-neutral-300 hover:border-[#FFD758] hover:text-[#FFD758] transition-all duration-300 shadow-lg">Websites</button>
+      <button (click)="filterWorks('landing')" [class.active-filter]="activeFilter === 'landing'" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-neutral-900 border border-neutral-800 text-neutral-300 hover:border-[#FFD758] hover:text-[#FFD758] transition-all duration-300 shadow-lg">Landing Pages</button>
+      <button (click)="filterWorks('logo')" [class.active-filter]="activeFilter === 'logo'" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-neutral-900 border border-neutral-800 text-neutral-300 hover:border-[#FFD758] hover:text-[#FFD758] transition-all duration-300 shadow-lg">Logo</button>
+      <button (click)="filterWorks('animation')" [class.active-filter]="activeFilter === 'animation'" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-neutral-900 border border-neutral-800 text-neutral-300 hover:border-[#FFD758] hover:text-[#FFD758] transition-all duration-300 shadow-lg">3D Animations</button>
+      <button (click)="filterWorks('poster')" [class.active-filter]="activeFilter === 'poster'" class="filter-btn px-5 py-2.5 rounded-xl text-sm font-semibold bg-neutral-900 border border-neutral-800 text-neutral-300 hover:border-[#FFD758] hover:text-[#FFD758] transition-all duration-300 shadow-lg">Graphics & Banners</button>
+    </div>
+  </div>
+
+  <!-- Shimmer Loader -->
+  <div *ngIf="isLoading" class="max-w-7xl mx-auto px-6 shimmer-grid">
+    <div class="shimmer-card bg-neutral-900 border border-neutral-800" *ngFor="let i of [1,2,3,4,5,6,7,8]">
+      <div class="shimmer shimmer-image"></div>
+      <div class="shimmer-content">
+        <div class="shimmer shimmer-line"></div>
+        <div class="shimmer shimmer-line short"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Container -->
+  <div id="portfolio-container" class="max-w-7xl mx-auto px-6" *ngIf="!isLoading">
+    <ng-container *ngFor="let section of portfolioData">
+      
+      <!-- Section Title -->
+      <div *ngIf="activeFilter === 'all' || section.parentName === activeFilter" class="mb-12">
+        <div class="flex items-center gap-4 mb-6">
+          <h3 class="text-2xl font-bold text-white tracking-wide border-l-4 border-[#FFD758] pl-4">
+            {{ section.name }}
+          </h3>
+          <div class="flex-grow h-[1px] bg-neutral-900"></div>
+        </div>
+
+        <!-- Grid of Images / Cards -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-neutral-900 border border-neutral-800 rounded-2xl overflow-hidden shadow-xl flex flex-col hover:border-[#FFD758]/50 transition duration-300" *ngFor="let image of section.images">
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                
+                <!-- Front Side -->
+                <div class="flip-card-front bg-neutral-950 p-4">
+                  <img [src]="image.thumbnail" [alt]="image.alt" class="max-h-full max-w-full object-contain rounded-xl" />
+                </div>
+                
+                <!-- Back Side -->
+                <div class="flip-card-back bg-neutral-900 p-4 border border-neutral-800">
+                  <button (click)="openModal(image.thumbnail)" class="text-sm px-6 py-2.5 rounded-xl bg-[#FFD758] text-neutral-950 font-bold hover:bg-white hover:shadow-[0_0_20px_rgba(255,215,88,0.4)] transition-all duration-300 transform hover:scale-105">
+                    Quick Preview
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </ng-container>
+  </div>
+
+  <!-- Modal -->
+  <div *ngIf="isModalOpen" class="fixed inset-0 bg-neutral-950/90 backdrop-blur-md z-50 flex items-center justify-center p-4">
+    <div class="relative max-w-5xl w-full bg-neutral-900 border border-neutral-800 rounded-3xl overflow-hidden shadow-2xl p-4">
+      <button (click)="closeModal()" class="absolute top-4 right-4 text-white bg-neutral-800 hover:bg-red-600 rounded-full w-10 h-10 flex items-center justify-center z-50 transition shadow-lg">
+        &times;
+      </button>
+      <div class="flex items-center justify-center max-h-[85vh] overflow-auto">
+        <img [src]="modalImageUrl" alt="Preview" class="w-full h-auto object-contain rounded-xl max-h-[80vh]" />
+      </div>
+    </div>
+  </div>
+
+</div>
